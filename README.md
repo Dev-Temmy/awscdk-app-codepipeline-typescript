@@ -1,1 +1,1 @@
-# awscdk-app-codepipeline-typescript-
+# awscdk-app-codepipeline-typescript
