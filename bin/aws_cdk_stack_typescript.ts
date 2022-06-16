@@ -5,8 +5,8 @@ import * as cdk from '@aws-cdk/core';
 //import { App, Stack } from 'aws-cdk-lib';
 
 
-import { FargateDemoStack } from '../lib/fargate'
-import {CloudfrontDemoStack} from '../lib/cloudfront'
+import { FargateDemoStack } from '../lib/fargate';
+import {CloudfrontDemoStack} from '../lib/cloudfront';
 import { CDKPipelineStack } from '../lib/pipeline-stack';
 
 const app = new cdk.App();
