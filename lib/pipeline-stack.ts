@@ -15,20 +15,14 @@ export class CDKPipelineStack extends cdk.Stack {
         const branch = 'master';
         const gitHubUsernameRepository = 'Dev-Temmy/awscdk-app-codepipeline-typescript';
 
-    const pipeline = new CodePipeline(this, 'Pipeline', {
+    const modernPipeline = new CodePipeline(this, 'Pipeline', {
+      selfMutation: false,
       pipelineName: 'MyCDKPipeline', 
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub(gitHubUsernameRepository, branch, {
           authentication: cdk.SecretValue.secretsManager('Github-awscdk-app-codepipeline-typescript-token'),
     }),
-      installCommands: [
-                    'npm install -g aws-cdk'
-                ],
-                commands: [
-                    'npm ci',
-                    'npm run build',
-                    'npx cdk synth'
-                ]
+      commands: ['npm ci','npm run build','npx cdk synth']
             })
         });
     }
