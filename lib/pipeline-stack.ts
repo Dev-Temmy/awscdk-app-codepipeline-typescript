@@ -16,7 +16,7 @@ export class CDKPipelineStack extends cdk.Stack {
         const gitHubUsernameRepository = 'Dev-Temmy/awscdk-app-codepipeline-typescript';
 
     const pipeline = new CodePipeline(this, 'Pipeline', {
-      pipelineName: 'MyCDKPipeline',
+      pipelineName: 'MyCDKPipeline', 
       synth: new ShellStep('Synth', {
         input: CodePipelineSource.gitHub(gitHubUsernameRepository, branch, {
           authentication: cdk.SecretValue.secretsManager('Github-awscdk-app-codepipeline-typescript-token'),
