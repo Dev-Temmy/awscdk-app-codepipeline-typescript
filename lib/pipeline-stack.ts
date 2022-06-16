@@ -1,6 +1,8 @@
 import * as cdk from '@aws-cdk/core';
 import { Construct } from 'constructs';
 import { CodePipeline, CodePipelineSource, CodeBuildStep } from '@aws-cdk/pipelines';
+import { ManualApprovalStep } from 'aws-cdk-lib/pipelines';
+//import {} from '../../../../'
 
 export class CDKPipelineStack extends cdk.Stack {
   constructor(scope: cdk.Construct, id: string, props?: cdk.StackProps) {
@@ -10,7 +12,8 @@ export class CDKPipelineStack extends cdk.Stack {
         const branch = 'master';
         const gitHubUsernameRepository = 'Dev-Temmy/awscdk-app-codepipeline-typescript';
 
-    const pipeline = new CodePipeline(this, 'Pipeline', {
+    //const pipeline = 
+    new CodePipeline(this, 'Pipeline', {
       pipelineName: 'MyCDKPipeline',
       synth: new CodeBuildStep('SynthStep', {
         input: CodePipelineSource.gitHub(gitHubUsernameRepository, branch, {
