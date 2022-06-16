@@ -9,7 +9,7 @@ export class CDKPipelineStack extends cdk.Stack {
     const pipeline = new CodePipeline(this, 'Pipeline', {
       pipelineName: 'MyCDKPipeline',
       synth: new ShellStep('Synth', {
-        input: CodePipelineSource.gitHub('Dev-Temmy/awscdk-app-codepipeline-typescript', 'main'),
+        input: CodePipelineSource.gitHub('Dev-Temmy/awscdk-app-codepipeline-typescript', 'master'),
         commands: ['npm ci', 'npm run build', 'npx cdk synth']
       })
     });
