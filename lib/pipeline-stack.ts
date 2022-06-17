@@ -1,7 +1,8 @@
 import * as cdk from '@aws-cdk/core';
 import { Construct } from 'constructs';
-import { CodePipeline, CodePipelineSource, ShellStep } from '@aws-cdk/pipelines';
+import { CodePipeline, CodePipelineSource, CodeBuildStep } from '@aws-cdk/pipelines';
 import { ManualApprovalStep } from 'aws-cdk-lib/pipelines';
+//import { CDKPipelineStage } from "./pipeline-stage";
 //import {} from '../../../../'
 
 export class CDKPipelineStack extends cdk.Stack {
@@ -15,11 +16,10 @@ export class CDKPipelineStack extends cdk.Stack {
         const branch = 'master';
         const gitHubUsernameRepository = 'Dev-Temmy/awscdk-app-codepipeline-typescript';
 
-   // const modernPipeline = 
-    new CodePipeline(this, 'Pipeline', {
-      selfMutation: false,
+    const modernPipeline = new CodePipeline(this, 'Pipeline', {
+      //selfMutation: false,
       pipelineName: 'MyCDKPipeline', 
-      synth: new ShellStep('Synth', {
+      synth: new CodeBuildStep('Synth', {
         input: CodePipelineSource.gitHub(gitHubUsernameRepository, branch, {
           authentication: cdk.SecretValue.secretsManager('Github-awscdk-app-codepipeline-typescript-token'),
     }),
@@ -27,5 +27,9 @@ export class CDKPipelineStack extends cdk.Stack {
       commands: ['npm ci','npm run build','npx cdk synth']
             })
         });
+
+         //***********Instantiate the stage and add it to the pipeline***********
+		//const deploy = new CDKPipelineStage(this, "Deploy");
+		//modernPipeline.addStage(deploy);
     }
   }
