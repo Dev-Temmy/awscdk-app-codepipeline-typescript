@@ -1,4 +1,6 @@
 import * as cdk from "@aws-cdk/core";
+//import * as cdk from 'aws-cdk-lib';
+import { Construct } from 'constructs';
 import { Bucket } from "@aws-cdk/aws-s3";
 import { BucketDeployment, Source } from "@aws-cdk/aws-s3-deployment";
 import * as origins from "@aws-cdk/aws-cloudfront-origins";
